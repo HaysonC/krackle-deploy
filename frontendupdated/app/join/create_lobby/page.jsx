@@ -178,10 +178,10 @@ export default function CreateLobbyPage() {
                     id="maxPlayers"
                     type="number"
                     min="2"
-                    max="10"
+                    max="50"
                     value={maxPlayers}
                     onChange={(e) => setMaxPlayers(e.target.value)}
-                    placeholder="2-10 players"
+                    placeholder="2-50 players"
                     className="h-12 pl-12 pr-4 text-base rounded-xl border-2 border-gray-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all duration-300 bg-white/80 backdrop-blur-sm font-medium placeholder:text-gray-400"
                   />
                   <div className="absolute right-3 top-1/2 -translate-y-1/2">
