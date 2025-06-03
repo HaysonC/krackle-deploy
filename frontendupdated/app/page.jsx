@@ -18,7 +18,7 @@ const VideoBackground = dynamic(() => import("@/components/video-background"), {
   ),
 })
 
-const API_BASE_URL = "https://96ryqgpzci27.share.zrok.io"
+const API_BASE_URL = "https://8554-202-28-7-4.ngrok-free.app"
 
 export default function KrackleLobby() {
   const [name, setName] = useState("")

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { useToast } from "@/hooks/use-toast"
 import { set } from 'date-fns'
 
-const WEBSOCKET_BASE_URL = "wss://96ryqgpzci27.share.zrok.io"
+const WEBSOCKET_BASE_URL = "wss://8554-202-28-7-4.ngrok-free.app"
 
 export function useWebSocket(lobbyCode, username, userToken, role) {
   const [isConnected, setIsConnected] = useState(false)

@@ -1,3 +1,4 @@
 {
-  "base_url": "https://8554-202-28-7-4.ngrok-free.app"
+  "base_url": "https://8554-202-28-7-4.ngrok-free.app",
+  "web_socket_base_url": "wss://8554-202-28-7-4.ngrok-free.app"
 }
