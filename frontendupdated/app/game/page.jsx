@@ -8,8 +8,6 @@ import { Users, Crown, Loader2, RefreshCw, Play, LogOut, Check, X } from "lucide
 import { useWebSocket } from "@/hooks/use-websocket" 
 import { set } from "date-fns"
 
-const API_BASE_URL = "https://cd6f-202-28-7-4.ngrok-free.app"
-
 export default function GamePage() {
   const [username, setUsername] = useState("")
   const [lobbyCode, setLobbyCode] = useState("")
