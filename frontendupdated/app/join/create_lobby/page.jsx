@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 import { useToast } from "@/hooks/use-toast"
 import { ArrowLeft, Users, Clock, Trophy, Sparkles } from "lucide-react"
 
-const API_BASE_URL = "https://8554-202-28-7-4.ngrok-free.app"
+const API_BASE_URL = "https://yjn856z48ow2.share.zrok.io"
 
 export default function CreateLobbyPage() {
   const [username, setUsername] = useState("")
