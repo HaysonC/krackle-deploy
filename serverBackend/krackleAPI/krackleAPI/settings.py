@@ -25,14 +25,14 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default_secret_key')  # Use environ
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['api.hayson.me', '8554-202-28-7-4.ngrok-free.app', "yjn856z48ow2.share.zrok.io  " ]
+ALLOWED_HOSTS = ['api.hayson.me', '8554-202-28-7-4.ngrok-free.app', "yjn856z48ow2.share.zrok.io", 'localhost']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
-    # Add your ngrok https URL if you test your frontend against it directly
-    # e.g., 'https://your-ngrok-frontend-domain.ngrok-free.app' 
-    # Also, ensure your ALLOWED_HOSTS includes the domain Django is served from if different
-    'https://yjn856z48ow2.share.zrok.ios' # If your backend is served here and frontend accesses it
+    'https://localhost:8005',
+    'https://yjn856z48ow2.share.zrok.io',
+    'https://krackle-deploy.vercel.app',
+    'https://krackle.co',
 ]
 
 # Application definition
