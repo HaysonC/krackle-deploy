@@ -2,7 +2,14 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+"""
+Start the ASGI server with Daphne (serves HTTP + WebSocket):
+    daphne -b 0.0.0.0 -p 8000 krackleAPI.asgi:application
 
+Don't point Daphne at the WSGI app (krackleAPI.wsgi:application) — that causes
+the "WSGIHandler.__call__() missing 1 required positional argument: 'start_response'"
+TypeError because Daphne expects an ASGI application.
+"""
 
 def main():
     """Run administrative tasks."""

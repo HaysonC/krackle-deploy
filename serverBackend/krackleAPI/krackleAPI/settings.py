@@ -25,12 +25,12 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default_secret_key')  # Use environ
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['api.hayson.me', '8554-202-28-7-4.ngrok-free.app', "yjn856z48ow2.share.zrok.io", 'localhost']
+ALLOWED_HOSTS = ['api.hayson.me', 'f1de419f553d.ngrok-free.app', "yjn856z48ow2.share.zrok.io", 'localhost']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'https://localhost:8005',
-    'https://yjn856z48ow2.share.zrok.io',
+    'https://f1de419f553d.ngrok-free.app',
     'https://krackle-deploy.vercel.app',
     'https://krackle.co',
 ]
@@ -50,16 +50,33 @@ INSTALLED_APPS = [
     # ... other apps
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True # Allows all origins
+CORS_ALLOW_ALL_ORIGINS = False
+
+CORS_ALLOWED_ORIGINS = [
+    'https://krackle-deploy.vercel.app',
+    'http://localhost:3000',
+    'https://krackle.co',
+    'https://yjn856z48ow2.share.zrok.io',
+    'https://f1de419f553d.ngrok-free.app',
+]
 
 # Ensure this is the only definition of CORS_ALLOW_HEADERS
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',
+    'accept-language',
     'authorization',
     'content-type',
     'dnt',
     'origin',
+    'priority',
+    'referer',
+    'sec-ch-ua',
+    'sec-ch-ua-mobile',
+    'sec-ch-ua-platform',
+    'sec-fetch-dest',
+    'sec-fetch-mode',
+    'sec-fetch-site',
     'user-agent',
     'x-csrftoken',
     'x-requested-with',
@@ -67,10 +84,11 @@ CORS_ALLOW_HEADERS = [
     'x-token',
     'x-user-token',
     'x-admin-token',
-    'ngrok-skip-browser-warning' # Ensure this header is present
+    'ngrok-skip-browser-warning'
 ]
 
 MIDDLEWARE = [
+    'api.middleware.CorsMiddleware',  # Custom CORS middleware
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

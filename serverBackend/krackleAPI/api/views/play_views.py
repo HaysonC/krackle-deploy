@@ -1,9 +1,11 @@
 from django.http import JsonResponse
 from .share_data import lobbies_data
+from django.conf import settings # Import settings
 
 
 
 def get_lobby_players(request):
+    allowed_origin = settings.CORS_ALLOWED_ORIGINS[0] if settings.CORS_ALLOWED_ORIGINS else ''
     if request.method == 'GET':
         lobby_code = request.headers.get('X-Lobby-Code')
 
@@ -11,10 +13,14 @@ def get_lobby_players(request):
             # Fallback to query parameter if header is not present
             lobby_code = request.GET.get('lobby_code') 
             if not lobby_code:
-                 return JsonResponse({"error": "X-Lobby-Code header or lobby_code query parameter is required."}, status=400)
+                 response = JsonResponse({"error": "X-Lobby-Code header or lobby_code query parameter is required."}, status=400)
+                 response['Access-Control-Allow-Origin'] = allowed_origin
+                 return response
 
         if lobby_code not in lobbies_data:
-            return JsonResponse({"error": f"Lobby '{lobby_code}' not found."}, status=404)
+            response = JsonResponse({"error": f"Lobby '{lobby_code}' not found."}, status=404)
+            response['Access-Control-Allow-Origin'] = allowed_origin
+            return response
 
         lobby_info = lobbies_data[lobby_code] # Get the specific lobby's data dictionary
         
@@ -29,7 +35,7 @@ def get_lobby_players(request):
         # connected_player_usernames = [user['username'] for user in connected_users_details]
 
 
-        return JsonResponse({
+        response = JsonResponse({
             "lobby_code": lobby_code,
             "lobby_name": lobby_name,
             "host_username": host_username,
@@ -37,7 +43,11 @@ def get_lobby_players(request):
             "rounds": rounds,
             "players": actual_player_list # This now correctly refers to the list of player usernames
         }, status=200)
+        response['Access-Control-Allow-Origin'] = allowed_origin
+        return response
 
-    return JsonResponse({"error": "Only GET method is allowed."}, status=405)
+    response = JsonResponse({"error": "Only GET method is allowed."}, status=405)
+    response['Access-Control-Allow-Origin'] = allowed_origin
+    return response
 
 
